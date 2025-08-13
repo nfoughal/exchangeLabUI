@@ -1,0 +1,93 @@
+{
+    "HomePage": {
+      "title": "Quelle {language} voulez-vous apprendre ?",
+      "language": "langue",
+      "forBusinesses": "Pour les entreprises",
+      "britishEnglish": "Français",
+      "logIn": "Se connecter",
+      "getStarted": "Commencer",
+      "moreLanguages": "Plus de langues",
+      "spanish": "Espagnol",
+      "german": "Allemand",
+      "italian": "Italien",
+      "french": "Français",
+      "english": "Anglais",
+      "childEnglish": "Anglais pour enfants",
+      "newcomer": "Nouveau",
+      "courses": "cours",
+      "culturalHistory": "Une Histoire Culturelle",
+      "ofCoffee": "Du Café",
+      "shareWeekend": "Partagez vos",
+      "weekendPlans": "plans de week-end"
+    },
+    "LanguageSelection": {
+      "title": "Quelle langue voulez-vous parler ?"
+    },
+    "ReasonSelection": {
+      "title": "Pourquoi apprenez-vous {language} ?",
+      "reasons": {
+        "school": "J'en ai besoin pour l'école",
+        "brainExercise": "Je veux le faire comme exercice cérébral",
+        "enjoyLearning": "J'aime simplement apprendre les langues",
+        "connectFamily": "Pour me connecter avec la famille / les amis",
+        "upcomingTrip": "J'en ai besoin pour un voyage à venir"
+      }
+    },
+    "UserTypeSelection": {
+      "title": "Êtes-vous un parent ou un étudiant ?",
+      "parent": "Parent",
+      "parentDesc": "Inscription pour mon enfant",
+      "student": "Étudiant",
+      "studentDesc": "Apprendre pour moi-même"
+    },
+    "ParentForm": {
+      "title": "Informations d'inscription",
+      "parentInfo": "Informations du parent",
+      "childInfo": "Informations de l'enfant",
+      "parentName": "Nom du parent",
+      "whatsappNumber": "Numéro WhatsApp",
+      "email": "Email",
+      "country": "Pays",
+      "selectCountry": "Sélectionner le pays",
+      "firstName": "Prénom",
+      "lastName": "Nom de famille",
+      "age": "Âge",
+      "signupChild": "Inscrire votre enfant"
+    },
+    "StudentForm": {
+      "title": "Inscription étudiant",
+      "firstName": "Prénom",
+      "lastName": "Nom de famille",
+      "email": "Email",
+      "phoneNumber": "Numéro WhatsApp ou téléphone",
+      "country": "Pays",
+      "selectCountry": "Sélectionner le pays",
+      "signUp": "S'inscrire"
+    },
+    "FinalOptions": {
+      "title": "Parfait ! Vous êtes prêt.",
+      "subtitle": "Comment souhaitez-vous commencer votre parcours d'apprentissage du {language} ?",
+      "takeTest": "Passer le test",
+      "takeTestDesc": "Évaluez votre niveau actuel",
+      "startBeginning": "Commencer au début",
+      "startBeginningDesc": "Apprendre depuis les bases"
+    },
+    "Countries": {
+      "unitedStates": "États-Unis",
+      "unitedKingdom": "Royaume-Uni",
+      "canada": "Canada",
+      "australia": "Australie",
+      "germany": "Allemagne",
+      "france": "France",
+      "spain": "Espagne",
+      "italy": "Italie"
+    },
+    "Errors": {
+    "requiredField": "Ce champ est obligatoire",
+    "nameMinLength": "Le nom doit contenir au moins 2 caractères",
+    "invalidPhoneNumber": "Numéro de téléphone invalide",
+    "invalidEmail": "Adresse e-mail invalide",
+    "invalidAge": "L'âge doit être entre 3 et 18 ans"
+  }
+  }
+  

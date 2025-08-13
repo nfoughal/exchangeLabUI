@@ -1,0 +1,39 @@
+{
+    "welcome": {
+      "title": "Découvrez votre niveau actuel !",
+      "description1": "Ce test de niveau en ligne vous donnera une indication approximative de votre niveau linguistique.",
+      "description2": "Il y a 12 questions et le test prend moins de 5 minutes. À la fin, nous vous enverrons vos résultats par email.",
+      "startButton": "Commencer le test",
+      "pressEnter": "appuyez sur Entrée ↵",
+      "selectLanguage": "Choisissez la langue du test :",
+      "part1": "Bonjour",
+      "part2": "Vous allez passer un test de langue.",
+      "part3": "Maintenant, commençons !"
+    },
+    "question": {
+      "okButton": "OK"
+    },
+    "email": {
+      "title": "Bien joué !",
+      "subtitle": "Entrez votre adresse email pour recevoir vos résultats.",
+      "placeholder": "nom@exemple.com",
+      "submitButton": "Envoyer",
+      "pressCtrlEnter": "appuyez sur Ctrl + Entrée ↵"
+    },
+    "thankYou": {
+      "title": "Merci !",
+      "completed": "Votre test de niveau a été complété avec succès.",
+      "results": "Vos Résultats",
+      "score": "Score",
+      "sentTo": "Nous vous contacterons bientôt par téléphone au ",
+      "checkInbox": " pour vous aider à choisir le niveau de classe et l’horaire qui vous conviennent le mieux.",
+      "takeAgain": "Refaire le Test",
+      "improve": "Vous voulez améliorer votre score ?"
+    },
+    "languages": {
+      "french": "Français",
+      "english": "Anglais",
+      "spanish": "Espagnol"
+    }
+  }
+  

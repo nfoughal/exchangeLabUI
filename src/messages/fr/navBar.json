@@ -1,0 +1,39 @@
+{
+  "NavBar": {
+    "home": "Accueil",
+    "courses": "Cours",
+    "students": "Étudiants",
+    "about": "À propos",
+    "login": "Connexion",
+    "signup": "S'inscrire",
+    "profile": "Profil",
+    "Exchange Lab": "Exchange Lab",
+    "liveClasses": "Cours Live",
+    "liveClassesSubItems": {
+      "english": "Anglais (adultes)",
+      "englishKids": "Anglais (enfants)",
+      "quranKids": "Coran (enfants)",
+      "spanish": "Espagnol (enfants)",
+      "spanishKids": "Espagnol (enfants)"
+    },
+    "recordedClasses": "Cours Enregistrés (à venir)",
+    "recordedClassesNew": "🆕",
+    "recordedClassesDesc": "Replays et cours à la demande",
+    "blog": "Blog",
+    "blogDesc": "Articles, conseils et actualités pédagogiques",
+    "videosandleastening": "Vidéos et Écoute",
+    "kidsfun": "Fun pour les Enfants",
+    "lifestyle": "Style de Vie",
+    "contact": "Contactez-nous",
+    "contactDesc": "Formulaire et coordonnées",
+    "goToClass": "Go to Class",
+    "goToClassDesc": "Lien vers la plateforme pour les étudiants",
+    "becomeTeacher": "Devenir Enseignant",
+    "becomeTeacherDesc": "Rejoignez notre équipe enseignante",
+    "adminArea": "Espace Pro",
+    "adminAreaDesc": "Portail réservé aux enseignants et administrateurs",
+    "portals": "Mon Espace",
+    "viewAllCourses": "Voir tous les cours",
+    "howItWorks": "Comment ça marche"
+  }
+}

@@ -1,0 +1,93 @@
+{
+    "HomePage": {
+      "title": "أي {language} تريد أن تتعلم؟",
+      "language": "لغة",
+      "forBusinesses": "للشركات",
+      "britishEnglish": "العربية",
+      "logIn": "تسجيل الدخول",
+      "getStarted": "ابدأ الآن",
+      "moreLanguages": "المزيد من اللغات",
+      "spanish": "الإسبانية",
+      "german": "الألمانية",
+      "italian": "الإيطالية",
+      "french": "الفرنسية",
+      "english": "الإنجليزية",
+      "childEnglish": "الإنجليزية للأطفال",
+      "newcomer": "جديد",
+      "courses": "دورات",
+      "culturalHistory": "تاريخ ثقافي",
+      "ofCoffee": "للقهوة",
+      "shareWeekend": "شارك",
+      "weekendPlans": "خطط نهاية الأسبوع"
+    },
+    "LanguageSelection": {
+      "title": "أي لغة تريد أن تتحدث؟"
+    },
+    "ReasonSelection": {
+      "title": "لماذا تتعلم {language}؟",
+      "reasons": {
+        "school": "أحتاجها للمدرسة",
+        "brainExercise": "أريد أن أفعل ذلك كتمرين للدماغ",
+        "enjoyLearning": "أستمتع بتعلم اللغات",
+        "connectFamily": "للتواصل مع العائلة / الأصدقاء",
+        "upcomingTrip": "أحتاجها لرحلة قادمة"
+      }
+    },
+    "UserTypeSelection": {
+      "title": "هل أنت والد أم طالب؟",
+      "parent": "الأب",
+      "parentDesc": "التسجيل لطفلي",
+      "student": "طالب",
+      "studentDesc": "التعلم لنفسي"
+    },
+    "ParentForm": {
+      "title": "معلومات التسجيل",
+      "parentInfo": "معلومات الوالد",
+      "childInfo": "معلومات الطفل",
+      "parentName": "اسم الوالد",
+      "whatsappNumber": "رقم الواتساب",
+      "email": "البريد الإلكتروني",
+      "country": "البلد",
+      "selectCountry": "اختر البلد",
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "age": "العمر",
+      "signupChild": "تسجيل طفلك"
+    },
+    "StudentForm": {
+      "title": "تسجيل الطالب",
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "phoneNumber": "رقم الواتساب أو الهاتف",
+      "country": "البلد",
+      "selectCountry": "اختر البلد",
+      "signUp": "التسجيل"
+    },
+    "FinalOptions": {
+      "title": "رائع! أنت جاهز تماماً.",
+      "subtitle": "كيف تريد أن تبدأ رحلة تعلم {language}؟",
+      "takeTest": "خذ الاختبار",
+      "takeTestDesc": "قيم مستواك الحالي",
+      "startBeginning": "ابدأ من البداية",
+      "startBeginningDesc": "تعلم من الأساسيات"
+    },
+    "Countries": {
+      "unitedStates": "الولايات المتحدة",
+      "unitedKingdom": "المملكة المتحدة",
+      "canada": "كندا",
+      "australia": "أستراليا",
+      "germany": "ألمانيا",
+      "france": "فرنسا",
+      "spain": "إسبانيا",
+      "italy": "إيطاليا"
+    },
+    "Errors": {
+      "requiredField": "هذا الحقل مطلوب",
+      "nameMinLength": "يجب أن يحتوي الاسم على حرفين على الأقل",
+      "invalidPhoneNumber": "رقم هاتف غير صالح",
+      "invalidEmail": "بريد إلكتروني غير صالح",
+      "invalidAge": "يجب أن يكون العمر بين 3 و 18 سنة"
+    }
+  }
+  
