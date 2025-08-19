@@ -7,11 +7,11 @@
       "logIn": "تسجيل الدخول",
       "getStarted": "ابدأ الآن",
       "moreLanguages": "المزيد من اللغات",
-      "spanish": "الإسبانية",
+      "spanish": "الإسبانية للأطفال",
       "german": "الألمانية",
       "italian": "الإيطالية",
       "french": "الفرنسية",
-      "english": "الإنجليزية",
+      "english": "الإنجليزية للبالغين",
       "childEnglish": "الإنجليزية للأطفال",
       "newcomer": "جديد",
       "courses": "دورات",
@@ -24,13 +24,22 @@
       "title": "أي لغة تريد أن تتحدث؟"
     },
     "ReasonSelection": {
-      "title": "لماذا تتعلم {language}؟",
+      "title": "لماذا تتعلم الإنجليزية؟",
+      "titleChild": "لماذا تريد أن يتعلم طفلك الإنجليزية؟",
+      "titleSpanish": "لماذا تريد أن يتعلم طفلك الإسبانية؟",
       "reasons": {
-        "school": "أحتاجها للمدرسة",
-        "brainExercise": "أريد أن أفعل ذلك كتمرين للدماغ",
-        "enjoyLearning": "أستمتع بتعلم اللغات",
+        "school": "أحتاجها للمدرسة أو العمل",
+        "brainExercise": "أريدها كتمرين ذهني",
+        "enjoyLearning": "أحب ببساطة تعلم اللغات",
         "connectFamily": "للتواصل مع العائلة / الأصدقاء",
         "upcomingTrip": "أحتاجها لرحلة قادمة"
+      },
+      "reasonsChild": {
+        "school": "هو/هي يحتاجها للمدرسة",
+        "brainExercise": "هو/هي يريدها كتمرين ذهني",
+        "enjoyLearning": "هو/هي يحب ببساطة تعلم اللغات",
+        "connectFamily": "للتواصل مع العائلة / الأصدقاء",
+        "upcomingTrip": "هو/هي يحتاجها لرحلة قادمة"
       }
     },
     "UserTypeSelection": {

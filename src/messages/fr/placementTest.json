@@ -1,14 +1,24 @@
 {
     "welcome": {
+      "part1": "Bienvenue ",
+      "part2": "Prêt pour le test de niveau ",
+      "part3": "Test de placement ?",
       "title": "Découvrez votre niveau actuel !",
-      "description1": "Ce test de niveau en ligne vous donnera une indication approximative de votre niveau linguistique.",
-      "description2": "Il y a 12 questions et le test prend moins de 5 minutes. À la fin, nous vous enverrons vos résultats par email.",
+      "description1": "Ce test nous aidera à déterminer votre niveau de langue.",
+      "description2": "Répondez à toutes les questions sur chaque page avant de continuer.",
       "startButton": "Commencer le test",
       "pressEnter": "appuyez sur Entrée ↵",
       "selectLanguage": "Choisissez la langue du test :",
-      "part1": "Bonjour",
-      "part2": "Vous allez passer un test de langue.",
-      "part3": "Maintenant, commençons !"
+      "quation": "Question",
+      "please": "Veuillez répondre à toutes les questions sur cette page pour continuer",
+      "complet": "Test terminé !",
+      "results": "Vos résultats",
+      "level": "Niveau recommandé : ",
+      "again": "Refaire le test",
+      "processing": "Traitement en cours...",
+      "nextpage": "Page suivante",
+      "finishtest": "Terminer le test"
+
     },
     "question": {
       "okButton": "OK"

@@ -2,13 +2,13 @@
     "WorksTestimonial": {
       "title": "comment ça marche",
       "subtitle": "Comment commencer à apprendre",
-      "processStepsTitle1": "Commencez par un cours d'accueil",
-      "processStepsTitle2": "Choisissez le bon moment pour commencer à apprendre.",
-      "processStepsTitle3": "Commencez à apprendre",
-      "processStepsTitle4": "Continuez à apprendre",
-      "processStepsDes1": "Réservez votre cours d'accueil. Installez-vous rapidement. Nous testerons votre niveau pour que vous commenciez au bon endroit.",
-      "processStepsDes2": "Choisissez le bon moment. Choisissez le moment qui vous convient pour commencer à apprendre, que ce soit le matin, l'après-midi ou le soir.",
-      "processStepsDes3": "Commencez à apprendre. Commencez votre voyage d'apprentissage des langues avec nos enseignants professionnels.",
-      "processStepsDes4": "Continuez à apprendre. Vous pouvez continuer à apprendre avec nous aussi longtemps que vous le souhaitez."
+      "processStepsTitle1": "Test de niveau ou formulaire",
+      "processStepsTitle2": "Confirmation de l'emploi du temps",
+      "processStepsTitle3": "Détails de paiement",
+      "processStepsTitle4": "Accès au groupe et identifiants",
+      "processStepsDes1": "Passez le test de niveau ou remplissez le formulaire si l'élève commence de zéro.",
+      "processStepsDes2": "Nous vous contacterons et vous communiquerons l'emploi du temps.",
+      "processStepsDes3": "Une fois approuvé, nous vous enverrons les détails de paiement via WhatsApp.",
+      "processStepsDes4": "Dès réception de votre paiement, nous vous ajoutons à votre groupe et vous envoyons vos identifiants de connexion."
     }
   }

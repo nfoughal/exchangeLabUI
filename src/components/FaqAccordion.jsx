@@ -45,16 +45,6 @@ export default function FAQ() {
       question: t("questions.manual.question"),
       answer: t("questions.manual.answer"),
     },
-    {
-      id: 7,
-      question: t("questions.howToJoin.question"),
-      answer: t("questions.howToJoin.answer"),
-    },
-    {
-      id: 8,
-      question: t("questions.howToJoin.question"),
-      answer: t("questions.howToJoin.answer"),
-    }
   ]
 
   const toggleItem = (id) => {
@@ -237,7 +227,7 @@ export default function FAQ() {
             whileTap={{ scale: 0.95 }}
           >
             <motion.div
-              className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 rounded-full transition-opacity duration-300"
+              className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20  transition-opacity duration-300"
             />
             
             <motion.div

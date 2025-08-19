@@ -1,24 +1,23 @@
 "use client"
 
 import { useLocale, useTranslations } from "next-intl"
-import { Sparkles } from "lucide-react"
 import "flag-icons/css/flag-icons.min.css"
 import { Link } from "@/i18n/navigation"
 
 const languages = [
-  {
-    name: "english",
-    learners: "6.8k",
-    code: "en",
-    flagCode: "gb",
-    language: "English",
-  },
   {
     name: "kidsEnglish",
     learners: "5.3k",
     code: "en-business",
     flagCode: "gb",
     language: "childEnglish",
+  },
+  {
+    name: "english",
+    learners: "6.8k",
+    code: "en",
+    flagCode: "gb",
+    language: "English",
   },
   {
     name: "spanish",
@@ -59,15 +58,6 @@ export default function LanguageBar() {
               <h4 className="text-sm text-gray-800 font-medium">
                 {t(`languages.${lang.name}`)}
               </h4>
-              <p className="text-xs text-[#777777]">
-                {lang.learners !== "NEW" ? (
-                  `${lang.learners} ${t('learners')}`
-                ) : (
-                  <span className="bg-red-100 px-1.5 py-0.5 rounded-sm flex items-center">
-                  {t('new')}
-                </span>
-                )}
-              </p>
             </div>
           </Link>
         ))}

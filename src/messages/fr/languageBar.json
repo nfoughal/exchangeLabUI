@@ -8,10 +8,10 @@
     "new": "NOUVEAU",
     "languages": {
       "coran": "Coran",
-      "english": "Anglais",
-      "kidsEnglish": "Enfant Anglais",
+      "english": "Anglais pour adultes",
+      "kidsEnglish": "Anglais pour enfant",
       "french": "Français",
-      "spanish": "Espagnol"
+      "spanish": "Espagnol pour enfants"
     }
   }
 }

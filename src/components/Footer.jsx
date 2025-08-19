@@ -3,9 +3,10 @@
 import Image from "next/image"
 import { useTranslations , useLocale } from "next-intl"
 import { useState } from "react"
-import { Linkedin, Twitter, Youtube, Facebook, Instagram, ExternalLink, ChevronDown, ChevronUp, Phone, Clock, Globe } from 'lucide-react'
+import { Linkedin, Twitter, Youtube, Facebook, Instagram, ExternalLink, ChevronDown, ChevronUp, Phone, Clock, Globe, Mail } from 'lucide-react'
 import { Link } from "@/i18n/navigation"
 import { Whatsapp } from "@/components/Whatssap"
+import Tiktok  from "@/components/Tiktok"
 
 
 export default function Footer() {
@@ -74,7 +75,7 @@ export default function Footer() {
                 </span>
               </div>
               <ul className={`space-y-3 relative z-10 overflow-hidden transition-all duration-300 ${expandedSections.company ? 'max-h-60 opacity-100 mb-4' : 'max-h-0 opacity-0 sm:max-h-60 sm:opacity-100'}`}>
-                {["about", "blog", "career", "press", "reviews"].map((item) => (
+                {[ "blog", "reviews"].map((item) => (
                   <li key={item}>
                     {item === "blog" ? (
                       <a
@@ -142,10 +143,10 @@ export default function Footer() {
                 </span>
               </div>
               <ul className={`space-y-3 relative z-10 overflow-hidden transition-all duration-300 ${expandedSections.operations ? 'max-h-60 opacity-100 mb-4' : 'max-h-0 opacity-0 sm:max-h-60 sm:opacity-100'}`}>
-                {["ourPlatform", "resources", "studentDiscount"].map((item) => (
+                {["ourPlatform"].map((item) => (
                   <li key={item}>
                     <Link
-                      href={'#'}
+                      href={'https://www.xlabplatform.com/login/index.php'}
                       className="text-sm text-[var(--color-desc)] transition-colors duration-200 flex items-center group"
                     >
                       <span className="w-0 opacity-0 group-hover:w-2 group-hover:opacity-100 transition-all duration-300 h-px bg-[#777777] mr-0 group-hover:mr-2"></span>
@@ -185,9 +186,10 @@ export default function Footer() {
                 {/* WhatsApp Contact Section */}
                 <div className="mt-6 p-4 bg-white rounded-lg border border-blue-100">
                   <div className="flex items-center gap-1 text-sm mb-1 text-[var(--color-desc)]">
-                  <p className="flex items-center gap-2"><Whatsapp color="#838383" className="w-4 h-4 text-green-600"/> 212663244841</p>
+                  <p className="flex items-center gap-2"><Whatsapp color="#838383" className="w-4 h-4 text-green-600"/> 00212663244841</p>
                   </div>
                   <div className="space-y-1 text-sm text-[var(--color-desc)]">
+                  <p className="flex items-center gap-2"><Mail className="w-4 h-4" /> Contact@xchangelab.info </p>                    
                     <p className="flex items-center gap-2"><Clock className="w-4 h-4" /> {t("timee")}</p>                    
                     <p className="flex items-center gap-2"> <Globe className="w-4 h-4 "/> {t("supportt")}</p>
                   </div>
@@ -198,7 +200,7 @@ export default function Footer() {
               <div className={`mt-6 sm:mt-8 flex flex-wrap gap-3 relative z-10 transition-all duration-300 ${expandedSections.contact ? 'opacity-100 mb-4' : 'opacity-0 sm:opacity-100'}`}>
                 {[
                   { icon: Whatsapp, label: "WhatsApp", href: "https://wa.me/212663244841" },
-                  { icon: Twitter, label: "Twitter" , href: "#" },
+                  { icon: Tiktok, label: "Tiktok" , href: "https://www.tiktok.com/@exchange_lab" },
                   { icon: Youtube, label: "YouTube"   , href: "https://www.youtube.com/@Exchange Lab" },
                   { icon: Facebook, label: "Facebook" , href: "https://www.facebook.com/Exchange LabMorocco?_rdc=1&_rdr" },
                   { icon: Instagram, label: "Instagram" , href: "https://www.instagram.com/exchange_lab/" }

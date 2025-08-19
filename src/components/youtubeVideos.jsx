@@ -21,10 +21,10 @@ export default function YoutubeTestimonials() {
   const isRTL = locale === "ar";
   
   const videos = [
-    { id: "a1", youtubeId: "mu04GA47C0g", title: t("readinganddiscussion"), blurb: t("kidsDescription"), audience: t("adults") },
-    { id: "a2", youtubeId: "HrZa0aDUyjA", title: t("communication"), blurb: t("adultsDescription"), audience: t("adults") },
     { id: "k1", youtubeId: "C6KylmEh6tU", title: t("readingchallenge"), blurb: t("kidsReadingDescription"), audience: t("kids") },
+    { id: "a1", youtubeId: "mu04GA47C0g", title: t("readinganddiscussion"), blurb: t("kidsDescription"), audience: t("adults") },
     { id: "k2", youtubeId: "mCYSGMAkTrM", title: t("examplecources"), blurb: t("adultsReadingDescription"), audience: t("kids") },
+    { id: "a2", youtubeId: "HrZa0aDUyjA", title: t("communication"), blurb: t("adultsDescription"), audience: t("adults") },
     { id: "k3", youtubeId: "LMPuRab2L_4", title: t("grammer"), blurb: t("adultsGrammarDescription"), audience: t("kids") }
   ];
 

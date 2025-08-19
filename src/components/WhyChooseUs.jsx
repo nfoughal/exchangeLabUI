@@ -143,7 +143,7 @@ export default function WhyChooseUs() {
                         transition={{ duration: 2, repeat: Infinity, delay: 1 }}
                       ></motion.div>
                       <img
-                        src="/whyus1.jpg"
+                        src="/whyus1.png"
                         alt="Why Choose Us"
                         className="icon w-35 h-35 sm:w-45 sm:h-45 object-cover rounded-lg"
                       />
@@ -255,7 +255,7 @@ export default function WhyChooseUs() {
                         transition={{ duration: 2.4, repeat: Infinity, delay: 1.2 }}
                       ></motion.div>
                       <img
-                        src="/whyus3.jpg"
+                        src="/whyus3.png"
                         alt="Why Choose Us"
                         width={45}
                         height={45}
@@ -313,7 +313,7 @@ export default function WhyChooseUs() {
                         transition={{ duration: 2.3, repeat: Infinity, delay: 1.3 }}
                       ></motion.div>
                       <img
-                        src="/whyus4.jpg"
+                        src="/whyus4.png"
                         alt="Why Choose Us"
                         className="icon w-35 h-35 sm:w-45 sm:h-45 object-cover rounded-lg"
                       />

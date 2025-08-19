@@ -95,19 +95,6 @@ const Navbar = () => {
             },
           ],
         },
-        {
-          category: t("recordedClasses"),
-          isNew: true,
-          items: [
-            { 
-              text: t("recordedClassesDesc"), 
-              href: "#", 
-              flagCode: "video",
-              flagBg: "bg-red-100",
-              flagColor: "text-red-600"
-            }
-          ],
-        },
       ],
     },
   ]
@@ -180,7 +167,9 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={cn(
+      <nav
+      id="navbar"
+       className={cn(
         "fixed top-0 left-0 right-0 transition-all duration-500 ease-out ",
         isScrolled 
           ? "bg-white/90 backdrop-blur-md border-gray-200 shadow-sm z-[90]"
@@ -239,12 +228,6 @@ const Navbar = () => {
                             )}>
                               {section.category}
                             </h3>
-                            {/* {section.isNew && (
-                              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gradient-to-r from-red-500 to-pink-500 text-white">
-                                <Sparkles className="w-2.5 h-2.5 mr-1" />
-                                NEW
-                              </span>
-                            )} */}
                           </div>
                           <div className="space-y-1">
                             {section.items.map((link, linkIdx) => (
@@ -333,6 +316,30 @@ const Navbar = () => {
                 <LanguageSwitcher />
               </div>
               
+              {/* Separator Line */}
+              <div className="hidden sm:block w-px h-6 bg-gray-300"></div>
+              
+              {/* Go to Class Button */}
+              <div className="hidden sm:block">
+                <Link
+                  href="https://www.xlabplatform.com/login/index.php"
+                  className={cn(
+                    "relative inline-flex items-center px-4 py-2 rounded-lg font-medium text-sm",
+                    "text-gray-600 hover:text-[#3189c5] transition-all duration-300 ease-out",
+                    "border- border-transparent hover:border-[#3189c5]",
+                    "bg-gray-50/50 hover:bg-blue-50/50",
+                    "backdrop-blur-sm",
+                    "group",
+                    getFontClass('medium')
+                  )}
+                >
+                  {t("goToClass")}
+                  
+                  {/* Bottom border animation */}
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#3189c5] group-hover:w-full transition-all duration-300 ease-out"></div>
+                </Link>
+              </div>
+              
               {/* CTA Button */}
               <div className="hidden lg:block">
                 <Link
@@ -362,7 +369,7 @@ const Navbar = () => {
                     isMobileMenuOpen ? "rotate-0 opacity-100 scale-100" : "rotate-90 opacity-0 scale-75"
                   )} />
                 </div>
-            </button>
+              </button>
             </div> 
           </div>
         </div>
@@ -393,7 +400,6 @@ const Navbar = () => {
   )
 }
 
-// Modern Simple Side Drawer Component
 // Modern Simple Side Drawer Component
 const ModernSideDrawer = ({ 
   isOpen, 
@@ -426,12 +432,9 @@ const ModernSideDrawer = ({
         {/* Clean Header */}
         <div className="flex items-center justify-between p-6 border-b border-white">
           <div>
-            <h2>
-              
-            </h2>
+            <h2></h2>
             <p className="text-sm "></p>
           </div>
-        
         </div>
 
         {/* Scrollable Content */}
@@ -543,17 +546,30 @@ const ModernSideDrawer = ({
 
             {/* Direct Links */}
             <div className="space-y-2 pt-4 border-t border-gray-100">
-            <Link
-              href="https://thexlabber.xchangelab.info/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 p-3 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors duration-200"
-            >
-              <Newspaper className="w-5 h-5" />
-              <span className={cn("font-medium", getFontClass('medium'))}>
-                {t("blog")}
-              </span>
-            </Link>
+              {/* Go to Class Link for Mobile */}
+              <Link
+                href="https://www.xlabplatform.com/login/index.php" // Update this URL to your actual class/dashboard URL
+                onClick={onClose}
+                className="flex items-center gap-3 p-3 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors duration-200"
+              >
+                <Play className="w-5 h-5" />
+                <span className={cn("font-medium", getFontClass('medium'))}>
+                  {t("goToClass") || "Go to Class"}
+                </span>
+              </Link>
+              
+              <Link
+                href="https://thexlabber.xchangelab.info/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-3 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors duration-200"
+              >
+                <Newspaper className="w-5 h-5" />
+                <span className={cn("font-medium", getFontClass('medium'))}>
+                  {t("blog")}
+                </span>
+              </Link>
+              
               <Link
                 href='/teacher'
                 onClick={onClose}

@@ -129,7 +129,7 @@ export default function OurCourses() {
       {/* First Course */}
       <div
         ref={course1Ref}
-        className="max-w-[1340px] mx-auto px-4 pt-16"
+        className="max-w-[1340px] mx-auto px-4 pt-16 mt-5"
         style={{
           transition: "opacity 0.6s, transform 0.6s",
           opacity: opacity1,

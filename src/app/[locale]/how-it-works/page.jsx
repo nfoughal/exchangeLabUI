@@ -568,7 +568,7 @@ export default function HowItWorks() {
             }}
           >
             <motion.div 
-              className="w-20 h-20 bg-[#7444d4] rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-200"
+              className="w-20 h-20 bg-[#7444d4] rounded-full flex items-center justify-center mb-6 shadow-lg shadow-[#b69de9]"
               initial={{ scale: 0, rotate: -180 }}
               whileInView={{ scale: 1, rotate: 0 }}
               transition={{ 
@@ -621,7 +621,7 @@ export default function HowItWorks() {
             }}
           >
             <motion.div 
-              className="w-20 h-20 bg-[#e13101] rounded-full flex items-center justify-center mb-6 shadow-lg shadow-green-200"
+              className="w-20 h-20 bg-[#e13101] rounded-full flex items-center justify-center mb-6 shadow-lg shadow-[#f5b7a6]"
               initial={{ scale: 0, rotate: -180 }}
               whileInView={{ scale: 1, rotate: 0 }}
               transition={{ 
@@ -674,7 +674,7 @@ export default function HowItWorks() {
             }}
           >
             <motion.div 
-              className="w-20 h-20 bg-[#3d7acc] rounded-full flex items-center justify-center mb-6 shadow-lg shadow-purple-200"
+              className="w-20 h-20 bg-[#3d7acc] rounded-full flex items-center justify-center mb-6 shadow-lg shadow-blue-200"
               initial={{ scale: 0, rotate: -180 }}
               whileInView={{ scale: 1, rotate: 0 }}
               transition={{ 
@@ -946,9 +946,9 @@ export default function HowItWorks() {
   </div>
 </motion.section>
       {/* // Video Section */}
-      <section className="">
+      {/* <section className="">
         <VideoSection />
-      </section>
+      </section> */}
 
     </div>
   )
