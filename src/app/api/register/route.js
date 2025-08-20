@@ -30,8 +30,8 @@ async function handleSubmission(body) {
 
     const firstname = studentInfo.firstName || childInfo.firstName || "";
     const lastname = studentInfo.lastName || childInfo.lastName || "";
-    const email = studentInfo.email  ||  "";
-    const phone = studentInfo.phoneNumber || "";
+    const email = studentInfo.email  || parentInfo.email || "";
+    const phone = studentInfo.phoneNumber || parentInfo.whatsappNumber || "";
     const country = studentInfo.country || parentInfo.country || "";
     const age = childInfo.age ? parseInt(childInfo.age, 10) : null;
 
@@ -53,6 +53,7 @@ async function handleSubmission(body) {
         phone,
         country,
         age,
+        is_synch: true,
         parent_name,
         parent_email,
         parent_whatsapp,

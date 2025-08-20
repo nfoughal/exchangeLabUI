@@ -12,13 +12,7 @@ export default function FinalOptions({ formData, onOptionSelect }) {
   const router = useRouter()
 
   const handleOptionSelect = async (option) => {
-    // if (option === "start_beginning" ) {
-      //   toast.success('merci pour votre intérêt, nous vous contacterons bientôt')
-      //   setTimeout(() => {
-        //     router.push("/")
-        //   }, 3000);
-        //   return
-        // }
+    if (option === "take_test" ) return;
         // Here you would send all the form data to your backend
         const registrationData = {
           ...formData,
