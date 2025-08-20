@@ -77,13 +77,30 @@ export default function StudentsTestimonial() {
 
   // Scroll to video by index (for small screens)
   const scrollToIndex = (idx) => {
-    if (scrollRef.current) {
-      const child = scrollRef.current.children[idx]
-      if (child) {
-        child.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
-      }
-    }
+    const container = scrollRef.current
+    if (!container) return
+    const child = container.children[idx]
+    if (!child) return
+  
+    const left =
+      child.offsetLeft - (container.clientWidth - child.clientWidth) / 2
+  
+    container.scrollTo({ left: Math.max(0, left), behavior: 'smooth' })
   }
+  
+  // 2) Guard the effect to avoid auto-scroll on initial load
+  const didInitRef = useRef(false)
+  useEffect(() => {
+    if (!isSmallScreen) return
+    if (!inView) return // optional: only after section is visible
+  
+    if (!didInitRef.current) {
+      didInitRef.current = true
+      return // skip first run on reload
+    }
+  
+    scrollToIndex(currentIndex)
+  }, [currentIndex, isSmallScreen, inView])
 
   useEffect(() => {
     if (isSmallScreen) scrollToIndex(currentIndex)

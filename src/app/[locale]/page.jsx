@@ -24,17 +24,15 @@ export async function generateMetadata({ params }) {
 }
 
 export default function HomePage({ params }) {
-  // const { locale } = use(params);
-  // setRequestLocale(locale);
-  // const t = useTranslations('HomePage');
+ 
 
   return (
     <div className=''>
       <div className="relative">
         <Hero />
         <div className="relative z-10 -mt-20 sm:-mt-8 md:-mt-13 lg:-mt-23 xl:-mt-22 2xl:-mt-20">
-  <LanguageBar />
-</div>
+          <LanguageBar />
+        </div>
       <WhyChooseUs />
       </div>
       <StudentsTestimonial />

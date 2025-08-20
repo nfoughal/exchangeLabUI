@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
+import { useEffect } from "react"
 
 export default function FinalOptions({ formData, onOptionSelect }) {
   const t = useTranslations("FinalOptions")
@@ -38,12 +39,25 @@ export default function FinalOptions({ formData, onOptionSelect }) {
     }
   }
 
+  const scrollToTop = () => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+  
+  useEffect(() => {
+
+      setTimeout(scrollToTop, 0);
+   
+  }, []);
+
   return (
     <div className="max-w-2xl mx-auto text-center py-40">
       <h1 className="text-4xl lg:text-5xl font-serif text-gray-900 mb-8">{t("title")}</h1>
 
-      <p className="text-xl text-[#777777] mb-12">{t("subtitle", { language: formData.language })}</p>
-
+      <p className="text-xl text-[#777777] mb-12">
+        {t("subtitle", { language: formData.language === "childEnglish" ? "English" : formData.language })}
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-lg mx-auto">
         <Link
           onClick={() => handleOptionSelect("take_test")}

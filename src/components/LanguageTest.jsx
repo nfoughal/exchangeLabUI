@@ -859,7 +859,7 @@ const questionSets = {
         { label: "C", value: "Catorce" },
       ],
       correctAnswer: "Quince",
-      image: "testPhotos/Question15.png",
+      image: "/testPhotos/Question15.png",
     },
     // Page 6
     {
@@ -1112,7 +1112,7 @@ const handleNextPage = async () => {
               <p className="text-blue-800">
                 {t("welcome.part1")} {formData?.childInfo?.firstName || formData?.studentInfo?.firstName || "Student"}!
                 {" "}
-                {t("welcome.part2")} {formData?.language} {t("welcome.part3")}
+                {t("welcome.part2")} {formData?.language === "childEnglish" ? "English" : formData?.language} {t("welcome.part3")}
                 {(formData?.userType === "parent" || formData?.language === "childEnglish") && " (Kids Version)"}
               </p>
             </div>
