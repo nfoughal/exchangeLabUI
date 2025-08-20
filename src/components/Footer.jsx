@@ -7,6 +7,8 @@ import { Linkedin, Twitter, Youtube, Facebook, Instagram, ExternalLink, ChevronD
 import { Link } from "@/i18n/navigation"
 import { Whatsapp } from "@/components/Whatssap"
 import Tiktok  from "@/components/Tiktok"
+import { usePathname } from "next/navigation";
+
 
 
 export default function Footer() {
@@ -15,6 +17,13 @@ export default function Footer() {
   const locale = useLocale()
   const isRTL = locale === "ar"
   
+  const pathname = usePathname();
+
+  // List of routes where footer should be hidden
+  const hideFooterRoutes = ["/fr/placement-test", '/ar/placement-test'];
+
+  const shouldHideFooter = hideFooterRoutes.includes(pathname);
+
   // State for collapsible sections on mobile
   const [expandedSections, setExpandedSections] = useState({
     company: false,
@@ -29,8 +38,9 @@ export default function Footer() {
       [section]: !prev[section]
     }))
   }
-
+  
   return (
+    !shouldHideFooter &&
     <footer className="relative bg-[#F2F7FD] overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-6 sm:pb-8">
         <div className="max-w-[1340px] mx-auto">

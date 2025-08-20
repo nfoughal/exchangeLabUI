@@ -1056,7 +1056,7 @@ const handleNextPage = async () => {
       completedAt: new Date().toISOString()
     }
 
-    console.log("Test results:", testResults)
+    console.log("here i should save the user as lead: ", testResults)
     await new Promise((r) => setTimeout(r, 1000))
 
     setScore(calculatedScore)

@@ -100,7 +100,7 @@ export default function ParentForm({ parentInfo, childInfo, onParentInfoChange, 
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
+    console.log("you should save the user here ***")
     // Validate all fields before submitting
     let formIsValid = true
     const newErrors = { ...errors }
