@@ -1045,13 +1045,13 @@ const handleNextPage = async () => {
 
     const testResults = {
       ...formData,
+      audience_type: formData.userType === 'parent' ? 'kids' : 'adults',
       testLanguage: formData.language,
       questionSetType: questionSetKey,
       answers: newAllAnswers,
       score: calculatedScore,
       totalQuestions: questions.length,
-      level: levelResult?.level || "Not determined",
-      testType: 'placement',
+      level: levelResult?.level || null,
       completedAt: new Date().toISOString(),
       finalChoice: 'lead',
     }
@@ -1059,20 +1059,20 @@ const handleNextPage = async () => {
     console.log("here i should save the user as lead: ", testResults)
     //call api/register
     // await new Promise((r) => setTimeout(r, 1000))
-    // try {
-    //   // Replace with your actual backend endpoint
-    //   console.log("here is the api : /api/register for leads")
-    //   const response = await fetch("/api/register", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(testResults),
-    //   })
+    try {
+      // Replace with your actual backend endpoint
+      console.log("call api to register the lead: ", testResults)
+      await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(testResults),
+      })
 
-    // } catch (error) {
-    //   console.error("Error lead registration:", error)
-    // }
+    } catch (error) {
+      console.error("Error lead registration:", error)
+    }
 
     setScore(calculatedScore)
     setLevel(levelResult?.level || "Not determined")

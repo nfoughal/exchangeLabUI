@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/supabase/server";// adjust path if needed
+import { eq } from "lodash";
 
 
 export async function POST(req) {
@@ -10,16 +11,49 @@ export async function POST(req) {
       const data =  await handleSubmission(body);
       return NextResponse.json({ success: true, data }, { status: 201 });
     }
-    // else if (body.finalChoice === 'take_test') {
-    //   const data = await handleLead(body);
-    //   return NextResponse.json({ success: true, data }, { status: 201 });
-    // }
+    else if (body.finalChoice === 'lead'){
+      const data = await handleLead(body);
+      return NextResponse.json({ success: true, data }, { status: 201 });
+    }
   } catch (err) {
     console.error("Error saving submission:", err);
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }
 
+
+async function handleLead(body) {
+  const supabase = await createClient();
+
+  const studentInfo = body.studentInfo  || {};
+  const childInfo = body.childInfo || {};
+  const parentInfo = body.parentInfo || {};
+
+  const email = studentInfo.email  || parentInfo.email || "";
+  const phone = studentInfo.phoneNumber || parentInfo.whatsappNumber || "";
+  const firstname = studentInfo.firstName || childInfo.firstName || "";
+  const lastname = studentInfo.lastName || childInfo.lastName || "";
+
+  const language = body.language;
+  const level = body.level;
+  const audience_type = body.audience_type;
+  const score = parseInt(body.score) || 0;
+
+  const { data, error } = await supabase.rpc('create_lead_from_exchangelabui', {
+    p_email: email,
+    p_phone: phone,
+    p_firstname: firstname,
+    p_lastname: lastname,
+    p_language: language,
+    p_level: level,
+    p_audience_type: audience_type,
+    p_score: score
+    // removed p_completed_at
+  });
+
+  if (error) throw error;
+  return data;
+}
 
 async function handleSubmission(body) {
     const supabase = await createClient();
