@@ -919,38 +919,38 @@ const questionSets = {
 // Scoring systems
 const scoringSystems = {
   EnglishKids: [
-    { min: 0, max: 6, level: "Beginner 1 – Semester 1" },
-    { min: 7, max: 10, level: "Beginner 1 – Semester 2" },
-    { min: 11, max: 13, level: "Beginner 2 – Semester 1" },
-    { min: 14, max: 16, level: "Beginner 2 – Semester 2" },
-    { min: 17, max: 19, level: "Beginner 3 – Semester 1" },
-    { min: 20, max: 21, level: "Beginner 3 – Semester 2" },
-    { min: 22, max: 23, level: "Pre-Intermediate 1 – Semester 1" },
-    { min: 24, max: 25, level: "Pre-Intermediate 1 – Semester 2" },
-    { min: 26, max: 27, level: "Pre-Intermediate 2 – Semester 1" },
-    { min: 28, max: 28, level: "Pre-Intermediate 2 – Semester 2" },
-    { min: 29, max: 29, level: "Pre-Intermediate 3 – Semester 1" },
-    { min: 30, max: 30, level: "Pre-Intermediate 3 – Semester 2" },
+    { min: 0, max: 6, level: "Beginner 1 S1" },
+    { min: 7, max: 10, level: "Beginner 1 S2" },
+    { min: 11, max: 13, level: "Beginner 2 S1" },
+    { min: 14, max: 16, level: "Beginner 2 S2" },
+    { min: 17, max: 19, level: "Beginner 3 S1" },
+    { min: 20, max: 21, level: "Beginner 3 S2" },
+    { min: 22, max: 23, level: "Pre-intermediate 1 S1" },
+    { min: 24, max: 25, level: "Pre-intermediate 1 S2" },
+    { min: 26, max: 27, level: "Pre-intermediate 2 S1" },
+    { min: 28, max: 28, level: "Pre-intermediate 2 S2" },
+    { min: 29, max: 29, level: "Pre-intermediate 3 S1" },
+    { min: 30, max: 30, level: "Pre-intermediate 3 S2" },
   ],
   EnglishAdults: [
     { min: 0, max: 4, level: "Beginner 1" },
     { min: 5, max: 8, level: "Beginner 2" },
     { min: 9, max: 12, level: "Beginner 3" },
-    { min: 13, max: 16, level: "Pre-Intermediate 1" },
-    { min: 17, max: 20, level: "Pre-Intermediate 2" },
-    { min: 21, max: 24, level: "Pre-Intermediate 3" },
+    { min: 13, max: 16, level: "Pre-intermediate 1" },
+    { min: 17, max: 20, level: "Pre-intermediate 2" },
+    { min: 21, max: 24, level: "Pre-intermediate 3" },
     { min: 25, max: 27, level: "Intermediate 1" },
     { min: 28, max: 30, level: "Intermediate 2" },
     { min: 31, max: 32, level: "Intermediate 3" },
     { min: 33, max: 34, level: "Upper-Intermediate 1" },
   ],
   Spanish: [
-    { min: 0, max: 5, level: "Beginner 1 – Semester 1" },
-    { min: 6, max: 8, level: "Beginner 1 – Semester 2" },
-    { min: 9, max: 11, level: "Beginner 2 – Semester 1" },
-    { min: 12, max: 14, level: "Beginner 2 – Semester 2" },
-    { min: 15, max: 17, level: "Beginner 3 – Semester 1" },
-    { min: 18, max: 20, level: "Beginner 3 – Semester 2" },
+    { min: 0, max: 5, level: "Beginner 1 S1" },
+    { min: 6, max: 8, level: "Beginner 1 S2" },
+    { min: 9, max: 11, level: "Beginner 2 S1" },
+    { min: 12, max: 14, level: "Beginner 2 S2" },
+    { min: 15, max: 17, level: "Beginner 3 S1" },
+    { min: 18, max: 20, level: "Beginner 3 S2" },
   ],
 }
 
@@ -1045,7 +1045,6 @@ const handleNextPage = async () => {
 
     const testResults = {
       ...formData,
-      email: formData?.email || formData?.parentInfo?.email || formData?.studentInfo?.email,
       testLanguage: formData.language,
       questionSetType: questionSetKey,
       answers: newAllAnswers,
@@ -1053,11 +1052,27 @@ const handleNextPage = async () => {
       totalQuestions: questions.length,
       level: levelResult?.level || "Not determined",
       testType: 'placement',
-      completedAt: new Date().toISOString()
+      completedAt: new Date().toISOString(),
+      finalChoice: 'lead',
     }
 
     console.log("here i should save the user as lead: ", testResults)
-    await new Promise((r) => setTimeout(r, 1000))
+    //call api/register
+    // await new Promise((r) => setTimeout(r, 1000))
+    // try {
+    //   // Replace with your actual backend endpoint
+    //   console.log("here is the api : /api/register for leads")
+    //   const response = await fetch("/api/register", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(testResults),
+    //   })
+
+    // } catch (error) {
+    //   console.error("Error lead registration:", error)
+    // }
 
     setScore(calculatedScore)
     setLevel(levelResult?.level || "Not determined")

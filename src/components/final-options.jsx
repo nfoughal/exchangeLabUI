@@ -12,13 +12,12 @@ export default function FinalOptions({ formData, onOptionSelect }) {
   const router = useRouter()
 
   const handleOptionSelect = async (option) => {
-    if (option === "take_test" ) return;
-        // Here you would send all the form data to your backend
-        const registrationData = {
-          ...formData,
-          finalChoice: option,
-        }
-        console.log("Selected option: *** *** ** ** ***", registrationData)
+    // Here you would send all the form data to your backend
+    const registrationData = {
+      ...formData,
+      finalChoice: 'submission',
+    }
+    console.log("Selected option: *** *** ** ** ***", registrationData)
 
     try {
       // Replace with your actual backend endpoint

@@ -6,7 +6,7 @@ export async function POST(req) {
   try {
     const body = await req.json();
 
-    if (body.finalChoice === 'start_beginning') {
+    if (body.finalChoice === 'submission') {
       const data =  await handleSubmission(body);
       return NextResponse.json({ success: true, data }, { status: 201 });
     }

@@ -105,11 +105,7 @@ export default function RegistrationPage() {
         return (
           <FinalOptions
             formData={formData}
-            onOptionSelect={(option) => {
-              console.log("Final form data:", { ...formData, finalChoice: option })
-              // Here you would send data to your backend
-              alert(`Registration completed! Choice: ${option}`)
-            }}
+            onOptionSelect={() => {}}
           />
         )
       default:
