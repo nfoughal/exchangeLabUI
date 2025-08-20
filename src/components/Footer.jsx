@@ -221,7 +221,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 bg-[#3189c5] text-white w-full">
+      <div className="relative z-10 bg-[#3189c5] text-white w-full py-6">
         <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
           <div className="max-w-[1340px] mx-auto flex flex-col md:flex-row justify-between items-center">
             <div className="text-xs mb-6 md:mb-0 flex items-center text-center md:text-left">
