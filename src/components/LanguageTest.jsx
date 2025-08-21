@@ -999,85 +999,75 @@ export default function LanguageTest({ formData }) {
     }))
   }
 
-  const isPageComplete = () => {
-    return currentPageQuestions.every(q => selectedAnswers[q.id])
+  // Allow skipping questions - no longer require all questions to be answered
+  const canProceed = () => {
+    return true // Users can always proceed, even with unanswered questions
   }
 
-
-// Replace the helper
-const scrollToTop = () => {
-  if (typeof window !== 'undefined') {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-}
-useEffect(() => {
+  // Replace the helper
   const scrollToTop = () => {
     if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
-  setTimeout(scrollToTop, 0)
-}
-, [])
 
-const handleNextPage = async () => {
-  if (!isPageComplete()) return
-
-  const pageAnswers = currentPageQuestions.map(q => selectedAnswers[q.id])
-  const newAllAnswers = [...allAnswers, ...pageAnswers]
-  setAllAnswers(newAllAnswers)
-
-  if (currentPage < totalPages - 1) {
-    setCurrentPage(prev => prev + 1)
-    setSelectedAnswers({})
-    setTimeout(scrollToTop, 0)
-  } else {
-    setIsSubmitting(true)
-
-    const calculatedScore = newAllAnswers.reduce((acc, answer, index) => {
-      return acc + (answer === questions[index].correctAnswer ? 1 : 0)
-    }, 0)
-
-    const scoringSystem = scoringSystems[questionSetKey]
-    const levelResult = scoringSystem.find(
-      range => calculatedScore >= range.min && calculatedScore <= range.max
-    )
-
-    const testResults = {
-      ...formData,
-      email: formData?.email || formData?.parentInfo?.email || formData?.studentInfo?.email,
-      testLanguage: formData.language,
-      questionSetType: questionSetKey,
-      answers: newAllAnswers,
-      score: calculatedScore,
-      totalQuestions: questions.length,
-      level: levelResult?.level || "Not determined",
-      testType: 'placement',
-      completedAt: new Date().toISOString()
+  useEffect(() => {
+    const scrollToTop = () => {
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
     }
-
-    console.log("Test results:", testResults)
-    await new Promise((r) => setTimeout(r, 1000))
-
-    setScore(calculatedScore)
-    setLevel(levelResult?.level || "Not determined")
-    setIsSubmitting(false)
-    setTestState("thank-you")
     setTimeout(scrollToTop, 0)
-  }
-}
+  }, [])
 
-  const resetTest = () => {
-    setTestState("welcome")
-    setCurrentPage(0)
-    setCurrentQuestionInPage(0)
-    setSelectedAnswers({})
-    setAllAnswers([])
-    setScore(0)
-    setLevel("")
+  const handleNextPage = async () => {
+    // Get answers for current page, use null for unanswered questions
+    const pageAnswers = currentPageQuestions.map(q => selectedAnswers[q.id] || null)
+    const newAllAnswers = [...allAnswers, ...pageAnswers]
+    setAllAnswers(newAllAnswers)
+
+    if (currentPage < totalPages - 1) {
+      setCurrentPage(prev => prev + 1)
+      setSelectedAnswers({})
+      setTimeout(scrollToTop, 0)
+    } else {
+      setIsSubmitting(true)
+
+      const calculatedScore = newAllAnswers.reduce((acc, answer, index) => {
+        return acc + (answer === questions[index].correctAnswer ? 1 : 0)
+      }, 0)
+
+      // Keep level calculation for data purposes
+      const scoringSystem = scoringSystems[questionSetKey]
+      const levelResult = scoringSystem.find(
+        range => calculatedScore >= range.min && calculatedScore <= range.max
+      )
+
+      const testResults = {
+        ...formData,
+        email: formData?.email || formData?.parentInfo?.email || formData?.studentInfo?.email,
+        testLanguage: formData.language,
+        questionSetType: questionSetKey,
+        answers: newAllAnswers,
+        score: calculatedScore,
+        totalQuestions: questions.length,
+        level: levelResult?.level || "Not determined", // Keep in data
+        testType: 'placement',
+        completedAt: new Date().toISOString()
+      }
+
+      console.log("Test results:", testResults)
+      await new Promise((r) => setTimeout(r, 1000))
+
+      setScore(calculatedScore)
+      setLevel(levelResult?.level || "Not determined") // Keep in state
+      setIsSubmitting(false)
+      setTestState("thank-you")
+      setTimeout(scrollToTop, 0)
+    }
   }
 
-  const progress = totalPages > 0 ? ((currentPage + (isPageComplete() ? 1 : 0)) / totalPages) * 100 : 0
+  const progress = totalPages > 0 ? ((currentPage + 1) / totalPages) * 100 : 0
 
   return (
     <div
@@ -1140,7 +1130,7 @@ const handleNextPage = async () => {
                 <div key={question.id} className="bg-white rounded-lg p-6 shadow-md">
                   <div className="text-center mb-6">
                     <div className="text-blue-600 text-sm font-medium mb-2">
-                      Quation {currentPage * questionsPerPage + index + 1}
+                      Question {currentPage * questionsPerPage + index + 1}
                     </div>
                     
                     {question.image && (
@@ -1194,7 +1184,7 @@ const handleNextPage = async () => {
             <div className="text-center pt-6">
               <Button
                 onClick={handleNextPage}
-                disabled={!isPageComplete() || isSubmitting}
+                disabled={isSubmitting}
                 className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 disabled:cursor-not-allowed"
               >
                 {isSubmitting 
@@ -1205,16 +1195,14 @@ const handleNextPage = async () => {
                 }
               </Button>
               
-              {!isPageComplete() && (
-                <p className="text-sm text-red-500 mt-2">
-                  {t("welcome.please")}
-                </p>
-              )}
+              <p className="text-sm text-gray-500 mt-2">
+                Skip the question if you don't know the answer.
+              </p>
             </div>
           </div>
         )}
 
-        {/* Thank You Page */}
+        {/* Thank You Page - Level removed from display */}
         {testState === "thank-you" && (
           <div className="text-center space-y-8 animate-fade-in">
             <div className="text-6xl mb-4">🎉</div>
@@ -1225,25 +1213,10 @@ const handleNextPage = async () => {
               <div className="text-3xl font-bold text-blue-600 mb-2">
                 {score}/{questions.length}
               </div>
-              <p className="text-blue-700 mb-4">
+              <p className="text-blue-700">
                 Score: {Math.round((score / questions.length) * 100)}%
               </p>
-              <div className="bg-white rounded-lg p-4 border border-blue-200">
-                <p className="text-lg font-semibold text-green-600">
-                  {t("welcome.level")}
-                </p>
-                <p className="text-xl font-bold text-green-700 mt-1">
-                  {level}
-                </p>
-              </div>
             </div>
-
-            <Button
-              onClick={resetTest}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
-            >
-              {t("welcome.again")}
-            </Button>
           </div>
         )}
       </div>
