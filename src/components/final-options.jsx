@@ -15,6 +15,7 @@ export default function FinalOptions({ formData, onOptionSelect }) {
     // Here you would send all the form data to your backend
     const registrationData = {
       ...formData,
+      language: formData.language === "childEnglish" ? "English" : formData.language,
       finalChoice: 'submission',
     }
     console.log("Selected option: *** *** ** ** ***", registrationData)

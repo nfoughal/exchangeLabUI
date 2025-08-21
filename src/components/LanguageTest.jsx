@@ -1045,6 +1045,7 @@ const handleNextPage = async () => {
 
     const testResults = {
       ...formData,
+      language: formData.language === "childEnglish" ? "English" : formData.language,
       audience_type: formData.userType === 'parent' ? 'kids' : 'adults',
       testLanguage: formData.language,
       questionSetType: questionSetKey,

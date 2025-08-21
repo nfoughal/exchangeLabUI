@@ -53,7 +53,29 @@ create table public.levels (
   constraint levels_language_id_fkey foreign KEY (language_id) references languages (id) on delete CASCADE
 ) TABLESPACE pg_default;
 
-
+create table public.submissions (
+  id uuid not null default extensions.uuid_generate_v4 (),
+  wp_submission_id text null,
+  email text null,
+  phone text null,
+  firstname text null,
+  lastname text null,
+  form_data jsonb null,
+  is_converted boolean not null default false,
+  created_at timestamp with time zone null default now(),
+  updated_at timestamp with time zone null default now(),
+  is_active boolean null default true,
+  is_synch boolean not null default false,
+  country text null,
+  age integer null,
+  parent_name text null,
+  parent_email text null,
+  parent_whatsapp text null,
+  language text null,
+  reason text null,
+  constraint submissions_pkey primary key (id),
+  constraint submissions_wp_submission_id_key unique (wp_submission_id)
+) TABLESPACE pg_default;
 
 -- the function that causes the call
 
@@ -64,9 +86,8 @@ create or replace function public.create_lead_from_exchangelabui(
   p_lastname text,
   p_language text,
   p_level text,
-  p_audience_type text, -- change to text type
+  p_audience_type text,
   p_score integer
-  -- removed p_completed_at parameter
 )
 returns jsonb
 language plpgsql
@@ -81,7 +102,8 @@ begin
   -- Cast text to enum
   v_audience_type := p_audience_type::public.audience_type;
 
-  select id into v_language_id from languages where name = p_language;
+  -- Add explicit cast for language enum
+  select id into v_language_id from languages where name = p_language::public.languages_enum;
   if v_language_id is null then
     return jsonb_build_object('error', 'Language not found');
   end if;
@@ -95,9 +117,15 @@ begin
     email, phone, test_completed, test_score, test_completion_date,
     level_id, last_name, first_name, is_synch, language_id, audience_type
   ) values (
-    p_email, p_phone, true, p_score, now(), -- use now() directly
+    p_email, p_phone, true, p_score, now(),
     v_level_id, p_lastname, p_firstname, true, v_language_id, v_audience_type
   ) returning id into v_lead_id;
+
+   -- Delete matching submission
+  delete from submissions
+  where email = p_email
+    and firstname = p_firstname
+    and lastname = p_lastname;
 
   return jsonb_build_object('lead_id', v_lead_id);
 end;
