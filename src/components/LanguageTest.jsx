@@ -1131,7 +1131,7 @@ export default function LanguageTest({ formData }) {
 
             <Button
               onClick={handleStartTest}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 hover:cursor-pointer"
             >
               {t("welcome.startButton")}
             </Button>
@@ -1179,7 +1179,7 @@ export default function LanguageTest({ formData }) {
                       <button
                         key={option.label}
                         onClick={() => handleAnswerSelect(question.id, option.value)}
-                        className={`p-3 rounded-lg border-2 text-left transition-all duration-200 hover:shadow-md ${
+                        className={`p-3 rounded-lg border-2 text-left transition-all hover:cursor-pointer duration-200 hover:shadow-md ${
                           selectedAnswers[question.id] === option.value
                             ? "border-blue-500 bg-blue-50 shadow-md"
                             : "border-gray-200 bg-white hover:border-gray-300"
@@ -1201,7 +1201,7 @@ export default function LanguageTest({ formData }) {
               <Button
                 onClick={handleNextPage}
                 disabled={isSubmitting}
-                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 disabled:cursor-not-allowed"
+                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:cursor-pointer disabled:cursor-not-allowed"
               >
                 {isSubmitting 
                   ? t("welcome.processing")
@@ -1212,7 +1212,7 @@ export default function LanguageTest({ formData }) {
               </Button>
               
               <p className="text-sm text-gray-500 mt-2">
-                Skip the question if you don't know the answer.
+                {t("welcome.skip")}
               </p>
             </div>
           </div>
@@ -1221,19 +1221,33 @@ export default function LanguageTest({ formData }) {
         {/* Thank You Page - Level removed from display */}
         {testState === "thank-you" && (
           <div className="text-center space-y-8 animate-fade-in">
-            <div className="text-6xl mb-4">🎉</div>
-            <h1 className="text-4xl font-bold text-green-600 mb-4">{t("welcome.complet")}</h1>
-            
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-lg mx-auto">
-              <h3 className="text-lg font-semibold text-blue-800 mb-4">{t("welcome.results")}</h3>
-              <div className="text-3xl font-bold text-blue-600 mb-2">
-                {score}/{questions.length}
-              </div>
-              <p className="text-blue-700">
-                Score: {Math.round((score / questions.length) * 100)}%
-              </p>
+          <div className="text-6xl mb-4">🎉</div>
+          <h1 className="text-4xl font-bold text-green-600 mb-4">{t("welcome.complet")}</h1>
+          
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-lg mx-auto">
+            <h3 className="text-lg font-semibold text-blue-800 mb-4">{t("welcome.results")}</h3>
+            <div className="text-3xl font-bold text-blue-600 mb-2">
+              {score}/{questions.length}
             </div>
+            <p className="text-blue-700">
+              Score: {Math.round((score / questions.length) * 100)}%
+            </p>
           </div>
+        
+          <div className="bg-green-50 border border-green-200 rounded-lg p-6 max-w-lg mx-auto">
+            <h3 className="text-lg font-semibold text-green-800 mb-3">{t("welcome.firstWelcome")}</h3>
+            <p className="text-green-700 mb-4">
+              {t("welcome.welcomeHome")}
+            </p>
+          </div>
+        
+          <button 
+            onClick={() => window.location.href = '/'}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 hover:cursor-pointer"
+          >
+            {t("welcome.HomePageButton")}
+          </button>
+        </div>
         )}
       </div>
 

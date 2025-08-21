@@ -184,8 +184,8 @@ const Navbar = () => {
                 src="/LOGO-XLAB.png"
                 alt="Exchange Labs"
                 width={160}
-                height={40}
-                className={`w-fit h-12 object-contain`}
+                height={45}
+                className={`w-fit h-14 object-contain`}
                 priority
               />
             </Link>

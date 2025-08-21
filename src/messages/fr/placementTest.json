@@ -17,8 +17,11 @@
       "again": "Refaire le test",
       "processing": "Traitement en cours...",
       "nextpage": "Page suivante",
-      "finishtest": "Terminer le test"
-
+      "finishtest": "Terminer le test",
+      "skip": "Sautez la question si vous ne connaissez pas la réponse.",
+      "firstWelcome": "Bienvenue à Exchange Lab !",
+      "welcomeHome": "Nous vous contacterons bientôt afin de vous attribuer le niveau de classe qui vous correspond et de vous souhaiter la bienvenue dans notre communauté d’apprentissage.",
+      "HomePageButton": "Retour à l'accueil"
     },
     "question": {
       "okButton": "OK"
