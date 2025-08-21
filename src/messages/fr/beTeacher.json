@@ -77,10 +77,10 @@
       "submitting": "Envoi de la candidature...",
       "emailNote": "La candidature sera envoyée à",
       "placeholdersTeacher": {
-        "firstName": "Jean",
-        "lastName": "Dupont",
-        "phone": "+33 1 23 45 67 89",
-        "email": "jean@exemple.com"
+        "firstName": "entrez votre prénom",
+        "lastName": "entrez votre nom",
+        "phone": "entrez votre numéro de téléphone",
+        "email": "entrez votre adresse e-mail"
       }
     },
     "successTeacher": {

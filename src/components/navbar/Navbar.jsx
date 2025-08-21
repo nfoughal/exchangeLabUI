@@ -325,21 +325,20 @@ const Navbar = () => {
                   href="https://www.xlabplatform.com/login/index.php"
                   className={cn(
                     "relative inline-flex items-center px-4 py-2 rounded-lg font-medium text-sm",
-                    "text-gray-600 hover:text-[#3189c5] transition-all duration-300 ease-out",
-                    "border- border-transparent hover:border-[#3189c5]",
-                    "bg-gray-50/50 hover:bg-blue-50/50",
+                    "text-white bg-[#ff7f6e] hover:bg-[#ff6b5a] transition-all duration-300 ease-out",
+                    "border border-transparent hover:border-[#ff6b5a]",
                     "backdrop-blur-sm",
                     "group",
                     getFontClass('medium')
                   )}
                 >
-                  {t("goToClass")}
+                  Go To Class
                   
                   {/* Bottom border animation */}
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#3189c5] group-hover:w-full transition-all duration-300 ease-out"></div>
+                  {/* <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300 ease-out"></div> */}
                 </Link>
               </div>
-              
+
               {/* CTA Button */}
               <div className="hidden lg:block">
                 <Link
@@ -554,7 +553,7 @@ const ModernSideDrawer = ({
               >
                 <Play className="w-5 h-5" />
                 <span className={cn("font-medium", getFontClass('medium'))}>
-                  {t("goToClass") || "Go to Class"}
+                  Go to Class
                 </span>
               </Link>
               

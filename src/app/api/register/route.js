@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/supabase/server";// adjust path if needed
-import { eq } from "lodash";
 
 
 export async function POST(req) {
@@ -16,7 +15,7 @@ export async function POST(req) {
       return NextResponse.json({ success: true, data }, { status: 201 });
     }
   } catch (err) {
-    console.error("Error saving submission:", err);
+    console.error("Error saving submission:", err.message);
     return NextResponse.json({ success: false, error: err.message }, { status: 500 });
   }
 }
@@ -51,7 +50,11 @@ async function handleLead(body) {
     // removed p_completed_at
   });
 
-  if (error) throw error;
+    if (error)
+    {
+      console.log("Error create_lead_from_exchangelabui: ", error)
+      throw error;
+    }
   return data;
 }
 
@@ -96,7 +99,11 @@ async function handleSubmission(body) {
       },
     ]);
 
-    if (error) throw error;
+    if (error)
+    {
+      console.log("Error submissions: ", error)
+      throw error;
+    }
 
     return data;
 }

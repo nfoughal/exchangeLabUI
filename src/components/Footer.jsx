@@ -231,19 +231,19 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 bg-[#3189c5] text-white w-full">
+      <div className="relative z-10 bg-[#3189c5] text-white w-full py-0 xs:py-6 sm:py-6 md:py-0">
         <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
           <div className="max-w-[1340px] mx-auto flex flex-col md:flex-row justify-between items-center">
             <div className="text-xs mb-6 md:mb-0 flex items-center text-center md:text-left">
-              <span className="text-lg mr-2 font-bold">×</span>
+              {/* <span className="text-lg mr-2 font-bold">×</span> */}
               © {currentYear} Exchange Lab - {t("allRightsReserved")}
             </div>
 
             <div className="flex flex-wrap justify-center md:justify-end gap-4 sm:gap-6">
-              {["legal", "privacy", "terms"].map((item) => (
+              {["terms"].map((item) => (
                 <Link
                   key={item}
-                  href={`#`}
+                  href={`/conditions`}
                   className="text-xs text-blue-100 hover:text-white transition-colors duration-200"
                 >
                   {t(item)}

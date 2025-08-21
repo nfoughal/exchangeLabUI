@@ -64,7 +64,7 @@ export default function HowItWorks() {
   return (
     <div className={`min-h-screen `}>
       {/* Hero Section */}
-      <section className="relative isolate overflow-hidden">
+      <section className="relative isolate overflow-hidden py-16">
           {/* Mobile: Background image and content */}
           <div className="block md:hidden">
             <div className="relative h-[50vh] w-full">

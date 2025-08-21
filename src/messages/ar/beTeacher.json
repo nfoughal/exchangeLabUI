@@ -69,10 +69,10 @@
       "submitting": "جاري إرسال الطلب...",
       "emailNote": "سيتم إرسال الطلب إلى",
       "placeholdersTeacher": {
-        "firstName": "أحمد",
-        "lastName": "محمد",
-        "phone": "+966 50 123 4567",
-        "email": "ahmed@example.com"
+        "firstName": "الاسم الأول",
+        "lastName": "اسم العائلة",
+        "phone": "رقم الهاتف",
+        "email": "البريد الإلكتروني"
       }
     },
     "successTeacher": {

@@ -11,6 +11,7 @@ import TeacherWork from "@/components/TeacherWork"
 import CircularTeamUI from "@/components/CircularTeamUi"
 import { Check } from "lucide-react"
 import { motion, useInView } from 'framer-motion';
+import { useEffect } from "react"
 
 export default function TeacherApplicationForm() {
   const t = useTranslations()
@@ -86,10 +87,25 @@ export default function TeacherApplicationForm() {
     }
   }
 
+
+
   const formInView = useInView(formRef, { once: true, amount: 0.3 })
 
-
+  const scrollToTop = () => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+  
+  useEffect(() => {
+    if (submitted) {
+      setTimeout(scrollToTop, 0);
+    }
+  }, [submitted]);
+  
   if (submitted) {
+    setTimeout(scrollToTop, 0);
+
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
         <div className="bg-white rounded-3xl shadow-2xl p-4 sm:p-8 max-w-full sm:max-w-md w-full text-center">

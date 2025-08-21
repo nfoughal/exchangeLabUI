@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation"
 import toast from "react-hot-toast"
 import { Toaster } from 'react-hot-toast'
 import { useRouter } from "@/i18n/navigation"
+import { useEffect } from "react"
 
 export default function FinalOptions({ formData, onOptionSelect }) {
   const t = useTranslations("FinalOptions")
@@ -36,7 +37,7 @@ export default function FinalOptions({ formData, onOptionSelect }) {
           toast.success('merci pour votre intérêt, nous vous contacterons bientôt')
           setTimeout(() => {
             router.push("/")
-          }, 3000);
+          }, 4000);
           return
         }
         onOptionSelect(option)
@@ -48,14 +49,65 @@ export default function FinalOptions({ formData, onOptionSelect }) {
     }
   }
 
+  const scrollToTop = () => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+
+    setTimeout(scrollToTop, 0);
+
+  }, []);
+
   return (
     <>
-      <Toaster toastOptions={{ duration: 4000 }} />
+      <Toaster
+        toastOptions={{
+          duration: 4000,
+          style: {
+            minWidth: '350px',
+            maxWidth: '500px',
+            background: '#fff',
+            color: '#222',
+            borderRadius: '12px',
+            boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+            fontSize: '1.1rem',
+            fontFamily: 'inherit',
+            border: '1px solid #e5e7eb',
+            padding: '18px 24px',
+          },
+          success: {
+            iconTheme: {
+              primary: '#10b981',
+              secondary: '#fff',
+            },
+            style: {
+              background: '#f0fdf4',
+              color: '#065f46',
+              border: '1px solid #bbf7d0',
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: '#ef4444',
+              secondary: '#fff',
+            },
+            style: {
+              background: '#fef2f2',
+              color: '#991b1b',
+              border: '1px solid #fecaca',
+            },
+          },
+        }}
+      />
       <div className="max-w-2xl mx-auto text-center py-40">
         <h1 className="text-4xl lg:text-5xl font-serif text-gray-900 mb-8">{t("title")}</h1>
 
-        <p className="text-xl text-[#777777] mb-12">{t("subtitle", { language: formData.language })}</p>
-
+        <p className="text-xl text-[#777777] mb-12">
+          {t("subtitle", { language: formData.language === "childEnglish" ? "English" : formData.language })}
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-lg mx-auto">
           <Link
             onClick={() => handleOptionSelect("take_test")}

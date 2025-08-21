@@ -16,7 +16,9 @@ import howItWorks from './howItWorks.json';
 import worksTestimonial from './worksTestimonial.json';
 import placementTest from './placementTest.json';
 import register from './register.json';
-import beTeacher from './beTeacher.json'; // Fixed casing to match convention
+import beTeacher from './beTeacher.json';
+ // Fixed casing to match convention
+import conditions from './conditions.json'; // Fixed casing to match convention
 
 
 export default {
@@ -37,7 +39,9 @@ export default {
   ...worksTestimonial,
   ...placementTest,
   ...register,
-  ...beTeacher, // Fixed casing to match convention
+  ...beTeacher,
+  ...conditions,
+   // Fixed casing to match convention
    // Fixed casing to match convention
   // Add hero button translations
   Hero: {

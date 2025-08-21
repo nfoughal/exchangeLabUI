@@ -27,6 +27,7 @@ export default getRequestConfig(async ({requestLocale}) => {
       ...(await import(`@/messages/${locale}/placementTest.json`)).default,
       ...(await import(`@/messages/${locale}/register.json`)).default,
       ...(await import(`@/messages/${locale}/beTeacher.json`)).default,
+      ...(await import(`@/messages/${locale}/conditions.json`)).default,
     }
   };
 });
