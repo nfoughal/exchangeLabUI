@@ -16,7 +16,7 @@ export default function FinalOptions({ formData, onOptionSelect }) {
     if (option === "start_beginning") {
       toast.success('merci pour votre intérêt, nous vous contacterons bientôt')
       setTimeout(() => {
-        router.push("/")
+        router.push("/") 
       }, 4000);
       return
     }
