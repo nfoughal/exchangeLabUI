@@ -8,13 +8,13 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
   const t = useTranslations("StudentForm")
   const tCountries = useTranslations("Countries")
   const tErrors = useTranslations("Errors")
-  
+
   // Country dropdown refs and state
   const [countryDropdownOpen, setCountryDropdownOpen] = useState(false)
   const [countrySearchQuery, setCountrySearchQuery] = useState("")
   const countryDropdownRef = useRef(null)
   const searchInputRef = useRef(null)
-  
+
   // Add error state for form fields
   const [errors, setErrors] = useState({
     firstName: "",
@@ -23,10 +23,10 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
     phoneNumber: "",
     country: ""
   })
-  
+
   // Track if form has been submitted
   const [formSubmitted, setFormSubmitted] = useState(false)
-  
+
   // Track touched fields
   const [touchedFields, setTouchedFields] = useState({
     firstName: false,
@@ -42,7 +42,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
     { key: "unitedStates", value: "United States", flag: "🇺🇸" },
     { key: "canada", value: "Canada", flag: "🇨🇦" },
     { key: "mexico", value: "Mexico", flag: "🇲🇽" },
-    
+
     // Europe
     { key: "unitedKingdom", value: "United Kingdom", flag: "🇬🇧" },
     { key: "germany", value: "Germany", flag: "🇩🇪" },
@@ -73,7 +73,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
     { key: "latvia", value: "Latvia", flag: "🇱🇻" },
     { key: "estonia", value: "Estonia", flag: "🇪🇪" },
     { key: "ukraine", value: "Ukraine", flag: "🇺🇦" },
-    
+
     // Africa
     { key: "algeria", value: "Algeria", flag: "🇩🇿" },
     { key: "tunisia", value: "Tunisia", flag: "🇹🇳" },
@@ -91,7 +91,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
     { key: "tanzania", value: "Tanzania", flag: "🇹🇿" },
     { key: "sudan", value: "Sudan", flag: "🇸🇩" },
     { key: "rwanda", value: "Rwanda", flag: "🇷🇼" },
-    
+
     // Middle East & Arab Countries
     { key: "saudiArabia", value: "Saudi Arabia", flag: "🇸🇦" },
     { key: "unitedArabEmirates", value: "United Arab Emirates", flag: "🇦🇪" },
@@ -104,7 +104,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
     { key: "iraq", value: "Iraq", flag: "🇮🇶" },
     { key: "syria", value: "Syria", flag: "🇸🇾" },
     { key: "yemen", value: "Yemen", flag: "🇾🇪" },
-    
+
     // Asia-Pacific
     { key: "australia", value: "Australia", flag: "🇦🇺" },
     { key: "newZealand", value: "New Zealand", flag: "🇳🇿" },
@@ -127,7 +127,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
         setCountryDropdownOpen(false);
       }
     }
-    
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -143,7 +143,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
 
   const validateField = (field, value) => {
     let errorMessage = ""
-    
+
     switch (field) {
       case "firstName":
       case "lastName":
@@ -164,7 +164,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
       default:
         break
     }
-    
+
     return errorMessage
   }
 
@@ -174,36 +174,61 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
     setErrors(prev => ({ ...prev, [field]: errorMessage }))
     onStudentInfoChange({ ...studentInfo, [field]: value })
   }
-  
+
   const handleBlur = (field) => {
     // Mark field as touched when it loses focus
     setTouchedFields(prev => ({ ...prev, [field]: true }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     // Validate all fields before submitting
     let formIsValid = true
     const newErrors = { ...errors }
-    
+    studentInfo.language = studentInfo.language === 'childEnglish' ? "English" : studentInfo.language;
+    const registrationData = {
+      studentInfo,
+      language: studentInfo.language,
+      reason: studentInfo.reason,
+      finalChoice: 'submission',
+    }
+    console.log("student infos: ", registrationData);
+    // return; 
+
+    try {
+      // Replace with your actual backend endpoint
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(registrationData),
+      })
+
+      if (!response.ok)
+        throw new Error('registration failed');
+    } catch (error) {
+      console.error("Error submitting registration:", error)
+    }
+    // return;
     // Validate all fields
     for (const field in studentInfo) {
       const errorMessage = validateField(field, studentInfo[field])
       newErrors[field] = errorMessage
       if (errorMessage) formIsValid = false
     }
-    
+
     setErrors(newErrors)
     setFormSubmitted(true)
-    
+
     // Mark all fields as touched on submit
     const allTouched = {}
     for (const field in touchedFields) {
       allTouched[field] = true
     }
     setTouchedFields(allTouched)
-    
+
     if (formIsValid) {
       onSubmit()
     }
@@ -211,20 +236,19 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
 
   const getInputClass = (fieldName) => {
     const showError = (formSubmitted || touchedFields[fieldName]) && errors[fieldName]
-    return `w-full px-4 py-2.5 rounded-lg border ${
-      showError
-        ? "border-red-500 focus:ring-2 focus:ring-red-500 focus:border-red-500" 
+    return `w-full px-4 py-2.5 rounded-lg border ${showError
+        ? "border-red-500 focus:ring-2 focus:ring-red-500 focus:border-red-500"
         : "border-gray-300 focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
-    } transition-all duration-200 outline-none`
+      } transition-all duration-200 outline-none`
   }
-  
+
   const shouldShowError = (fieldName) => {
     return (formSubmitted || touchedFields[fieldName]) && errors[fieldName]
   }
 
   // Filter countries based on search query
-  const filteredCountries = countries.filter(country => 
-    country.value.toLowerCase().includes(countrySearchQuery.toLowerCase()) || 
+  const filteredCountries = countries.filter(country =>
+    country.value.toLowerCase().includes(countrySearchQuery.toLowerCase()) ||
     tCountries(country.key).toLowerCase().includes(countrySearchQuery.toLowerCase())
   );
 
@@ -257,7 +281,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
                   className={`${getInputClass("firstName")} pl-4 transition-all duration-300 focus:scale-[1.01]`}
                 />
                 {studentInfo.firstName && (
-                  <button 
+                  <button
                     type="button"
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                     onClick={() => handleChange("firstName", "")}
@@ -287,7 +311,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
                   className={`${getInputClass("lastName")} pl-4 transition-all duration-300 focus:scale-[1.01]`}
                 />
                 {studentInfo.lastName && (
-                  <button 
+                  <button
                     type="button"
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                     onClick={() => handleChange("lastName", "")}
@@ -317,7 +341,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
                   className={`${getInputClass("email")} pl-4 transition-all duration-300 focus:scale-[1.01]`}
                 />
                 {studentInfo.email && (
-                  <button 
+                  <button
                     type="button"
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                     onClick={() => handleChange("email", "")}
@@ -347,7 +371,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
                   className={`${getInputClass("phoneNumber")} pl-4 transition-all duration-300 focus:scale-[1.01]`}
                 />
                 {studentInfo.phoneNumber && (
-                  <button 
+                  <button
                     type="button"
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                     onClick={() => handleChange("phoneNumber", "")}
@@ -377,7 +401,7 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
                   </span>
                   <FiChevronDown className={`transition-transform duration-200 ${countryDropdownOpen ? 'transform rotate-180' : ''}`} />
                 </button>
-                
+
                 {countryDropdownOpen && (
                   <div className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-lg border border-gray-200 overflow-hidden">
                     <div className="p-2 border-b sticky top-0 bg-white">
@@ -399,9 +423,8 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
                           <button
                             key={country.key}
                             type="button"
-                            className={`w-full text-left px-4 py-2.5 hover:bg-blue-50 flex items-center space-x-2 transition-colors ${
-                              studentInfo.country === country.value ? 'bg-blue-50 font-medium' : ''
-                            }`}
+                            className={`w-full text-left px-4 py-2.5 hover:bg-blue-50 flex items-center space-x-2 transition-colors ${studentInfo.country === country.value ? 'bg-blue-50 font-medium' : ''
+                              }`}
                             onClick={() => {
                               handleChange("country", country.value);
                               setCountryDropdownOpen(false);
@@ -429,8 +452,8 @@ export default function StudentForm({ studentInfo, onStudentInfoChange, onSubmit
         </div>
 
         <div className="pt-4">
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="w-full bg-[#3189c5] hover:bg-[#276c9a] text-white px-8 py-3 text-lg font-medium shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1 rounded-lg"
           >
             {t("signUp")}
